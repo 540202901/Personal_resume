@@ -1,6 +1,0 @@
-Resume 简历
-personal resume 个人简历 ; 人简历 ; 人履历表 ; 个人履历表
-Waypoint Resume 回复导航点
-job resume 工作简历 ; 求职简历 ; 应聘简历 ; 求职个人简历
-resume macro 继续执行宏 ; 继续执行宏英语
-Resume Certificate 简历证书 ; 简历证明
