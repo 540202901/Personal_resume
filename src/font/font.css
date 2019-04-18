@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "zh35-yh";
+  src: url("zh35-yh/zh35-yh.woff2") format("woff2"),
+url("zh35-yh/zh35-yh.woff") format("woff"),
+url("zh35-yh/zh35-yh.ttf") format("truetype"),
+url("zh35-yh/zh35-yh.eot") format("embedded-opentype"),
+url("zh35-yh/zh35-yh.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
