@@ -28,7 +28,7 @@
     name: "app",
     data:function(){
       return {
-        name:'王 浩然',
+        name:'王浩然',
         rotateSkill:["设计师","学习者","开发者"],
       }
     },
@@ -56,7 +56,7 @@
 
 <style lang="scss" scoped>
     .app-container{
-      /*@import './font/font.css';//引入字体*/
+      @import './font/font.css';//引入字体
 
 
 

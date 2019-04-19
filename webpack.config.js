@@ -11,7 +11,6 @@ var VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
 module.exports = {
-  mode:'development',//设置模式
   entry:path.join(__dirname,'./src/main.js'),//入口文件路径
   output:{//输出选
     path:path.join(__dirname,'./dist'),//输出路径
@@ -50,5 +49,9 @@ module.exports = {
       { test:/\.vue$/,use:'vue-loader' },//处理 .vue 文件的loader
     ]
   },
+  //============缩小项目大小部分
+  mode:'development',//设置模式
+  // mode:'none',//设置模式
+  // devtool: false
 }
 
