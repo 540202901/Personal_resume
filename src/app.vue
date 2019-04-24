@@ -4,28 +4,32 @@
 
       <!--头像部分-->
       <header @click="goMain"  >
-        <headerBox  :hidden-flag="toMainTranFlag"  :app-flag="appFlag"></headerBox>
+        <headerContainer  :hidden-flag="toMainTranFlag"  :app-flag="appFlag"></headerContainer>
       </header>
       <!--头像部分-->
 
       <!--侧边导航栏-->
       <transition enter-active-class="animated fadeInUp">
         <nav v-if="appFlag">
-          <navigation></navigation>
+          <navigationContainer></navigationContainer>
         </nav>
       </transition>
       <!--侧边导航栏-->
 
       <!--内容头部-->
       <transition enter-active-class="animated fadeInDown">
-        <div class='main-header' v-if="MHeaderFlag">
+        <div class='main-header' v-if="MHeaderFlag" >
+          <titleContainer></titleContainer>
         </div>
       </transition>
       <!--内容头部-->
 
       <!--内容面板-->
       <transition enter-active-class="animated fadeInUp">
-        <main v-if="mainFlag">
+        <main  v-if="mainFlag" >
+          <transition mode="out-in">
+            <component :is="$store.state.comName"></component>
+          </transition>
         </main>
       </transition>
       <!--内容面板-->
@@ -40,16 +44,20 @@
 
 
 
-
-
-
-
   </div>
 </template>
 
 <script>
-  import headerBox from './components/Header.vue'
-  import navigation from './components/Navigation.vue'
+  import headerContainer from './components/Header.vue'
+  import navigationContainer from './components/Navigation.vue'
+  import titleContainer from './components/Title.vue'
+
+  //需要在main中切换的组件
+  import Home from './components/interface/Home.vue'
+  import Resume from './components/interface/Resume.vue'
+  import ProjectWall from './components/interface/ProjectWall.vue'
+  import Contact from './components/interface/Contact.vue'
+
 
   export default {
     name:'app',
@@ -61,6 +69,7 @@
         //其他盒子显示
         MHeaderFlag:false,
         mainFlag:false,
+
       }
     },
     mounted:function(){//挂载结束后生命周期钩子
@@ -84,10 +93,16 @@
         setTimeout(()=>{this.MHeaderFlag = true},1500)//主信息头部
         setTimeout(()=>{this.mainFlag = true},2000)//主信息页面
       },//进入主页
+
+
+
     },
     components:{
-      headerBox,//头像盒子组件
-      navigation,//导航组件
+      headerContainer,//头像盒子组件
+      navigationContainer,//导航组件
+      titleContainer,//标题组件
+      //在main中切换的组件
+      Home,Resume,ProjectWall,Contact,
     },
 
 
@@ -96,10 +111,12 @@
 </script>
 
 <style lang="scss" scoped>
+
   /*首页样式*/
   .app-container{
     /*app根界面*/
     @import './font/font.css';//引入字体
+    @import './lib/font-awesome-4.7.0/css/font-awesome.min.css';//引入奥森图标
     background: url('./images/main-bg.jpg') bottom no-repeat;
     background-size:cover;
     width: 100%;
@@ -137,9 +154,6 @@
   /*首页样式*/
 
 
-
-
-
   /*过渡样式*/
   .toMainTransition{
     /*手机端布局:打开主页面后的样式*/
@@ -169,7 +183,7 @@
       display:grid;
       grid-gap:15px;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: 130px 170px 300px ;
+      grid-template-rows: 120px 170px 300px ;
       grid-template-areas:
           "h h h h c c c c c c c c "
           "h h h h m m m m m m m m "
@@ -184,23 +198,35 @@
       }
       /*头部部分*/
 
+      /*导航部分*/
       nav{
-        background-color: yellow;
+        background-color: #f4d03f;
         grid-area:n;
       }
+      /*导航部分*/
+
+      /*标题部分*/
       .main-header{
-        background-color: green;
+        /*background-color: green;*/
         grid-area:c;
       }
+      /*标题部分*/
+
+
+
+      /*主体内容部分*/
       main{
-        background-color: red;
+        /*background-color: black;*/
         grid-area:m;
       }
+      /*主体内容部分*/
+
+      /*页脚部分*/
       footer{
         display: none;
         background-color: hotpink;
       }
-
+      /*页脚部分*/
 
     }
     /*打开主页面后的样式*/
@@ -215,7 +241,6 @@
       overflow-y: auto;
       justify-content:flex-start;
       align-items:flex-start;
-
 
       /*主页样式*/
       .mainBox {
@@ -267,5 +292,21 @@
   }
   /*手机端布局:打开主页面后的样式*/
   /*打开主页面后的样式*/
+
+
+
+  /*切换页面样式*/
+  .app-container{
+    .v-enter,.v-leave-to{
+      /*opacity:0;*/
+      height: 0;
+      /* transform: translateY(-200px);*/
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition:all .5s ease;
+    }
+  }
+  /*切换页面样式*/
 
 </style>

@@ -211,8 +211,8 @@
     .beginPage{
       cursor:auto;
       width: 256.667px;
-      height: 315px;
-      transform:translate(-272px,-143px);
+      height: 305px;
+      transform:translate(-272px,-148px);
 
       position: static;
       transition:all 0.7s linear;
