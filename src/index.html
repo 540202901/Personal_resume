@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="个人简历">
-    <meta name="author" content="King">
-    <title>王浩然</title>
-    <!--手机端设置-->
-    <meta content="width=device-width,initial-scale=1" name="viewport">
-    <!--<script src="./bundle.js"></script>-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="个人简历">
+  <meta name="author" content="King">
+  <title>王浩然</title>
+
+      <script  src="http://pqikp3898.bkt.clouddn.com/cdn/vue/vue/2.6.10/vue.min.js"></script>
+      <script  src="http://pqikp3898.bkt.clouddn.com/cdn/vue/vuex/3.1.0/vuex.min.js"></script>
+      <link rel="stylesheet" href="http://pqikp3898.bkt.clouddn.com/cdn/css/Animate/Animate.css">
+      <link rel="stylesheet" href="http://pqikp3898.bkt.clouddn.com/cdn/bootstrap/bootstrap-vue/2.0.0-rc.18/bootstrap-vue.min.css">
+      <link rel="stylesheet" href="http://pqikp3898.bkt.clouddn.com/cdn/bootstrap/bootstrap/4.3.1/bootstrap.min.css">
+      <link rel="stylesheet" href="http://pqikp3898.bkt.clouddn.com/cdn/font/font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+
+  <!--<script src="./public/js/vue/vue.min.js"></script>-->
+  <!--<script src="./public/js/vue/vuex.min.js"></script>-->
+
+  <!--<link rel="stylesheet" href="./public/css/bootstrap/bootstrap.min.css">-->
+  <!--<link rel="stylesheet" href="./public/css/bootstrap/bootstrap-vue.min.css">-->
+  <!--<link rel="stylesheet" href="./public/css/Animate.css">-->
+  <!--<link rel="stylesheet" href="./public/font/font-awesome-4.7.0/css/font-awesome.min.css">-->
+
+  <!--手机端设置-->
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <!--<script src="./bundle.js"></script>-->
   <style >
+
     html,body,#app{
       bottom: 0;
       margin: 0;
       width: 100%;
-      height: 100%;
+      overflow: hidden;
+      -webkit-overflow-scrolling:touch;
+
     }
     .loading-screen{
       position:fixed;
@@ -22,17 +43,26 @@
       margin: 0;
       width: 100%;
       height: 100%;
-      background: url('./src/images/Preloader_7.gif') center no-repeat rgba(246,215,109,1);
+      background: url('./src/public/images/Preloader_7.gif') center no-repeat ,
+      url('./public/images/Preloader_7.gif') center no-repeat  rgba(246,215,109,1);
+
       z-index: 9999;
-
-
     }/*等待页面*/
+    .none{
+      transition:all 500ms;
+      display: none;
+    }
   </style>
+
+
+
 </head>
 <body>
-    <div class="loading-screen" id="loading-screen"></div>
-    <div id="app">
-    </div>
+<div class="loading-screen" id="loading-screen"></div>
+<div id="app">
+</div>
+
+
 </body>
 </html>
 
