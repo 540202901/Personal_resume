@@ -17,7 +17,7 @@
     <!--外部链接-->
     <div class="connect">
       <b-button-group>
-        <b-button v-for="(item,i) in $store.state.connectList" :key="item.id"
+        <b-button v-for="(item,i) in connectList" :key="item.id"
                   v-b-tooltip.hover="item.title" @click="openContactCard(item.openCard,item.title)"
         >
           <a :href="item.href" target="_blank" :onclick="item.clickFlag"
@@ -45,6 +45,9 @@
           {id:4,name:'Contact',word:'联系方式',icon:'paper-plane',active:false},
         ],
       }
+    },
+    computed:{
+      connectList(){return this.$store.state.user.connectList},
     },
     methods:{
       changeMainView:function(index,name){//切换组件

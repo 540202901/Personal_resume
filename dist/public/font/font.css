@@ -16,10 +16,10 @@
   font-style: normal;
 }
 
-/*@font-face {*/
-  /*font-family: "zh24-zhss";*/
-  /*src: url("字魂24号-镇魂手书.ttf") format("truetype");*/
-  /*font-weight: normal;*/
-  /*font-style: normal;*/
-/*}*/
+@font-face {
+  font-family: "zh24-zhss";
+  src: url("字魂24号-镇魂手书.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 

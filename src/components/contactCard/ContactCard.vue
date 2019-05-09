@@ -1,18 +1,18 @@
 <template>
   <div class="contactCar-container"
-       :class="off?'off':''"
+       :class="on?'on':''"
        @click="$store.commit('changeContactCarFlag',{off:true})"
   >
     <div>
-     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"  :duration="1000">
+     <transition enter-active-class="animated bounceInDown" leave-active-class="animated  bounceOutDown"  :duration="1000">
       <b-card
-          v-show="$store.state.contactCarFlag"
-          :title="titleList[$store.state.contactCarName].title"
+          v-show="$store.state.flagStore.contactCarFlag"
+          :title="connectCardList[$store.state.user.contactCarName].title"
           tag="article"
           class="mb-2"
       >
         <b-card-text>
-          <b-img-lazy :src="titleList[$store.state.contactCarName].img"  blank-src="https://upload-images.jianshu.io/upload_images/5070211-b4120bdbd5933573.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/812"></b-img-lazy>
+          <b-img-lazy :src="connectCardList[$store.state.user.contactCarName].img"  ></b-img-lazy>
         </b-card-text>
       </b-card>
     </transition>
@@ -26,32 +26,23 @@
     name: "ContactCard",
     data:function () {
       return {
-        titleList:{
-          'QQ':{
-            title:'我的QQ：540202901',
-            img:'http://pqikp3898.bkt.clouddn.com/blog/resume/practiceCarWeChat.JPG',
-          },
-          '微信':{
-            title:'我的微信：15114223688',
-            img:'http://pqikp3898.bkt.clouddn.com/blog/resume/practiceCarQQ.JPG',
-          },
-        },
-        off:false,
+        on:false,
       }
     },
     methods:{
 
     },
     computed:{
-      isOffCar(){return this.$store.state.contactCarFlag},
+      isOffCar(){return this.$store.state.flagStore.contactCarFlag},
+      connectCardList(){return this.$store.state.user.connectCardList},
     },
     watch:{
       isOffCar:function (newVal) {
         if (newVal === false){
-          return setTimeout(()=>{this.off=false},1000)
+          return setTimeout(()=>{this.on=false},1000)
 
         }
-        this.off = true
+        this.on = true
       }
     },
 
@@ -74,15 +65,31 @@
   @media screen and (max-width: 767px){
     .contactCar-container{
       position: fixed;
-      margin: 50px auto;
+      left: 0;
+      top: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-
+      box-sizing: border-box;
+      .mb-2{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        img{
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
-    .contactCar-container.off{
+    .contactCar-container.on{
+      top: 5px;
       width: 100%;
       height: 100%;
     }
+
+
+
+
   }
 </style>

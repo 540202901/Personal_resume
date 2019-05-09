@@ -1,15 +1,15 @@
 <template>
-  <div class="footer-container">
-    <div class="word">联&nbsp&nbsp&nbsp&nbsp系&nbsp&nbsp&nbsp&nbsp我&nbsp&nbsp&nbsp&nbsp:   </div>
+  <div class="footer-container" :class="[titleMove?'move':'']">
+    <div class="word">Connect With Me  </div>
     <!--外部链接-->
     <div class="connect">
-        <b-button v-for="(item,i) in $store.state.connectList" :key="item.id"
-                  v-b-tooltip.hover="item.title" @click="openContactCard(item.openCard,item.title)"
-        >
-          <a :href="item.href" target="_blank" :onclick="item.clickFlag">
+          <a :href="item.href" target="_blank"
+             :onclick="item.clickFlag"
+             v-for="(item,i) in connectList" :key="item.id"
+             @click="openContactCard(item.openCard,item.title)"
+          >
             <i :class="'fa fa-'+ item.icon"></i>
           </a>
-        </b-button>
     </div>
     <!--外部链接-->
 
@@ -26,11 +26,16 @@
         }
       },//打开联系卡
     },
+    computed:{
+      titleMove(){ return this.$store.state.flagStore.titleMove},
+      connectList:function () {return  this.$store.state.user.connectList},
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .footer-container{
+    margin-bottom: 15px;
     width: 100%;
     height: 100%;
     background-color: #666;
@@ -39,9 +44,9 @@
     .word{
       display: inline-block;
       color:#f4d03f;
-      margin-left: 20px;
-      margin-right: 20px;
-      width: 100px;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 130px;
       text-align: center;
       line-height: 100%;
     }
@@ -49,6 +54,30 @@
     .connect{
       a{
         color:white;
+        display: inline-block;
+        margin: 0 10px 0 10px;
+      }
+      a:hover,a:focus{
+        color: #f4d03f;
+      }
+
+    }
+  }
+
+  @media screen and (max-width:767px){
+    /*footer盒子切换动画*/
+    .footer-container.move{
+      animation:footer-move 1s linear ;
+      @keyframes footer-move{
+        0%{
+          transform:translateY(0);
+        }
+        50%{
+          transform:translateY(1000px);
+        }
+        100%{
+          transform:translateY(0);
+        }
       }
     }
   }

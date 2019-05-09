@@ -7,7 +7,11 @@
         <mainContainer></mainContainer>
 
       </div>
+
+      <!--显示练习方式二维码卡片组件-->
       <contactCard></contactCard>
+      <!--显示项目卡片组件-->
+      <projectCard></projectCard>
     </div>
 
   </div>
@@ -16,6 +20,9 @@
 <script>
   import mainContainer from './components/MainContainer.vue'
   import contactCard from './components/contactCard/ContactCard.vue'
+  //项目显示卡
+  import projectCard from './components/interface/project_wall_components/ProjectCard.vue'
+
   export default {
     name: "app",
     data:()=>{
@@ -40,6 +47,7 @@
     components:{
       mainContainer,//主页面组件
       contactCard,//联系卡
+      projectCard,//项目显示卡
     },
     computed: {
       listenIsMain() {return this.$store.state.flagStore.isMain;},
@@ -84,7 +92,7 @@
     align-items: center;
 
     .main-deviation-box{
-      width: 800px;
+      width: 747px;
       height: 600px;
       /*background-color: rgba(0,0,0,.5);*/
       display:flex;
@@ -120,8 +128,7 @@
         width: 100%;
         min-height: 200%;
         display: block;
-        overflow-x: hidden;
-        overflow-y: auto;
+
 
 
         .main-deviation-box-center{

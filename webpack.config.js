@@ -39,7 +39,9 @@ module.exports = {
   //============设置Vue==============
   resolve:{
     alias:{//修改Vue被导入时候的包的路径
-      "vue$":"vue/dist/vue.js"
+      "vue$":"vue/dist/vue.js",
+      "chart.js$":"chart.js/dist/Chart.bundle.min.js",
+
     }
   },
 
@@ -51,6 +53,7 @@ module.exports = {
   externals:{
     "vue":"Vue",
     "vuex":"Vuex",
+
   },
 
 }

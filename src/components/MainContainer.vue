@@ -52,8 +52,9 @@
 </script>
 
 <style lang="scss" scoped>
+
   .main-container{
-    width: 800px;
+    width: 747px;
     height: 600px;
     display:grid;
     grid-gap:15px;
@@ -63,7 +64,7 @@
         "h h h h c c c c c c c c "
         "h h h h m m m m m m m m "
         "n n n n m m m m m m m m ";
-    .header,.nav,.main-header,.main,.footer{
+    .header,.nav,.main-header,.main-view,.footer{
       width: 100%;
       height: 100%;
     }
@@ -92,6 +93,7 @@
     .main-view{
       /*background-color: black;*/
       grid-area:m;
+      overflow: hidden;
     }
     /*主体内容部分*/
 
@@ -112,40 +114,42 @@
   @media screen and (max-width:767px){
     .main-container{
       width: 100%;
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: 300px 60px 130px 560px 50px;
-      grid-template-areas:
-          "h"
-          "n"
-          "c"
-          "m"
-          "f";
+      /*grid-template-columns: repeat(1, 1fr);*/
+      /*grid-template-rows: 300px 60px 130px 500px 50px;*/
+      /*grid-template-areas:*/
+          /*"h"*/
+          /*"n"*/
+          /*"c"*/
+          /*"m"*/
+          /*"f";*/
+      display: block;
 
-      .header,.nav,.main-header,.main,.footer{
+      .header,.nav,.main-header,.main-view,.footer{
         -webkit-box-sizing:border-box;
         box-sizing:border-box;
-        margin: 0;
-        height: 100%;
+        margin: 0 0 20px 0;
+        /*height: 100%;*/
         width: 100%;
       }
 
       /*头部部分*/
       .header{
+        height: 300px;
       }
       /*头部部分*/
-
       .nav{
-
+        height: 60px;
       }
       .main-header{
-
+        height: 130px;
       }
-      .main{
-
+      .main-view{
+        height: auto;
       }
       .footer{
         grid-area:f;
         display: block;
+        height: 50px;
       }
 
 

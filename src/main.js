@@ -12,8 +12,6 @@ import app from './app.vue'
 import store from './js/store.js'
 
 
-
-
 var vm = new Vue({
   el:'#app',
   render:c => c(app),
