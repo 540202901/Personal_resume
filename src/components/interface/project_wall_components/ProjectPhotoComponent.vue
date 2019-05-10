@@ -43,6 +43,7 @@
 
 <style lang="scss" scoped>
   .project-photo{
+    cursor:pointer;
     width: 100%;
     height: 100%;
     display: flex;

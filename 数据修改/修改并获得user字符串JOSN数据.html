@@ -11,7 +11,9 @@
 
 <script>
   var user = {
-    user: {
+    status:0,
+    message:{
+      user: {
         name:'王浩然',//简历主角名字
         rotateSkillArr:["设计师","学习者","开发者"],//不断更新的文字内容
         connectList:[
@@ -102,7 +104,8 @@
             对员工工资制度进行合作制转化，提高员工积极性，提高公司的投资回报率。<br>
 
             `},
-          {name:'销售代表',describe:'智华传奇企业管理有限公司',date:'2016.04 - 2017.008',workText:`
+          {name:'销售代表',describe:'智华传奇企业管理有限公司',date:'2016.04 - 2017.008',
+            workText:`
             工作内容:<br>
             搜集客户资料，并利用电话进行沟通，与客户约见进行产品介绍，并邀约产品说明会。<br>
             根据客户需求的特点，为客户提供最优产品解决方案，负责与客户之间的商务谈判，建立客户关系，并随时争取达成销售目标。
@@ -129,7 +132,7 @@
             isShow:false,
           },
         ],//项目图片列表
-      }
+      }}
   }
   var str = JSON.stringify(user)
   var box = window.document.getElementById('box')

@@ -61,7 +61,6 @@
       switchComponents:function (component) {
         for (var i=0;i<this.resumeFlagList.length;i++){
           var flagName = this.resumeFlagList[i]
-          console.log(flagName)
           if (component === flagName){
             this[flagName] = true
           }else{

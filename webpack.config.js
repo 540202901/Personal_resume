@@ -47,13 +47,12 @@ module.exports = {
 
 
   //============缩小项目大小部分=================================================
-  mode:'development',//设置模式
-  // mode:'production',//设置模式
+  // mode:'development',//设置模式
+  mode:'production',//设置模式
   //排除相关项目文件
   externals:{
     "vue":"Vue",
     "vuex":"Vuex",
-
   },
 
 }

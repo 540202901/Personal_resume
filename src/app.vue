@@ -1,13 +1,14 @@
 <template>
-  <div class="app-container">
-    <div class="main-deviation-box" >
+  <div class="app-container" >
+    <div class="error" v-if="!userDataAvailable">
+        <h1>数据信息读取失败或其他错误，请稍后尝试。</h1>
+    </div>
+    <div class="main-deviation-box" v-if="userDataAvailable">
       <div class="main-deviation-box-center"
            :class="isMainAnimateOut?'isMain':''"
            ref="mainDeviationBox">
         <mainContainer></mainContainer>
-
       </div>
-
       <!--显示练习方式二维码卡片组件-->
       <contactCard></contactCard>
       <!--显示项目卡片组件-->
@@ -27,6 +28,7 @@
     name: "app",
     data:()=>{
       return {
+        userDataAvailable:false,
       }
     },
     mounted:function(){
@@ -43,8 +45,16 @@
           loadBox.classList.add("none")
         },1000)//1秒后让盒子消失，避免遮挡内容的点击。
       },//关闭等待页面
+      getUser:function () {
+        this.$http.get('API/resume').then(result =>{
+          if(result.body.status === 0){
+            this.$store.commit('setUser',result.body.message.user)//用AJAX获取User数据
+            this.userDataAvailable = true//在数据未获取前页面不显示
+          }
+        })
+      }
     },
-    components:{
+    components : {
       mainContainer,//主页面组件
       contactCard,//联系卡
       projectCard,//项目显示卡
@@ -71,7 +81,10 @@
         //如果点击了进入主页面，且屏幕属于手机端尺寸，触发此事件
         // if (newVal && width < 768) {}
       }
-    }
+    },
+    created:function () {
+      this.getUser()//获取User数据
+    },//创建完数据还未生成盒子的的钩子函数
 
   }
 </script>
